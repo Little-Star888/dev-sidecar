@@ -6,12 +6,13 @@ module.exports = {
   appId: 'dev-sidecar',
   productName: 'dev-sidecar',
   artifactName: 'DevSidecar-${version}-${arch}.${ext}',
-  copyright: 'Copyright © 2020-2026 Greper, WangLiang, CuteOmega',
+  copyright: 'Copyright © 2020-' + new Date().getFullYear() + ' Greper, WangLiang, CuteOmega',
   directories: {
     output: 'dist_electron',
+    buildResources: 'build',
   },
   files: [
-    'dist/**/*',
+    'dist_electron/**/*',
     'src/**/*',
     'package.json',
     'extra/**/*',
@@ -36,6 +37,10 @@ module.exports = {
       {
         target: 'nsis',
         arch: ['x64', 'ia32', 'arm64'],
+      },
+      {
+        target: 'nsis',
+        arch: ['universal'],
       },
     ],
   },
