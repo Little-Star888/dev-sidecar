@@ -2,7 +2,6 @@ const { defineConfig } = require('@vue/cli-service')
 const webpack = require('webpack')
 
 const publishUrl = process.env.VUE_APP_PUBLISH_URL
-const publishProvider = process.env.VUE_APP_PUBLISH_PROVIDER
 console.log('Publish url:', publishUrl)
 
 module.exports = defineConfig({

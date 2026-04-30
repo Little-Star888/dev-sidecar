@@ -5,15 +5,13 @@ import { join } from 'node:path'
 import log from '../../utils/util.log.gui.js'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const staticPath = isDevelopment
-  ? join(process.cwd(), 'public')
-  : join(app.getAppPath(), 'dist')
+const extraPath = join(process.cwd(), 'extra')
 
 export default {
   open () {
     const options = {
       name: 'EnableLoopback',
-      icns: process.platform === 'darwin' ? join(staticPath, 'icon.icns') : undefined,
+      icns: process.platform === 'darwin' ? join(extraPath, 'icons/icon.icns') : undefined,
       env: { PARAM: 'VALUE' },
     }
     const exeFile = DevSidecar.api.shell.extraPath.getEnableLoopbackPath()

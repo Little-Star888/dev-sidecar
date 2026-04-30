@@ -444,7 +444,7 @@ export default {
       }
 
       > button i {
-        size: 40px;
+        font-size: 40px;
       }
     }
 

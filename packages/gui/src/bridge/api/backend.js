@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import DevSidecar from '@docmirror/dev-sidecar'
-import { ipcMain } from 'electron'
+import { app, ipcMain } from 'electron'
 import lodash from 'lodash'
 import jsonApi from '@docmirror/mitmproxy/src/json.js'
 import { createRequire } from 'node:module'
@@ -17,7 +17,7 @@ const { configFromFiles } = coreDefaultConfig
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const mitmproxyPath = path.join(__dirname, '../mitmproxy.js')
-process.env.DS_EXTRA_PATH = path.join(__dirname, '../../extra/')
+process.env.DS_EXTRA_PATH = path.join(app.getAppPath(), 'extra')
 let currentWin
 
 const getDefaultConfigBasePath = function () {

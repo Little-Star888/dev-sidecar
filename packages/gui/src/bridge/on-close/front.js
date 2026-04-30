@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, resolveComponent } from 'vue'
 
 let closeType = 2
 let doSave = false
@@ -15,20 +15,24 @@ function install (app, api) {
 
     const shortcut = message.showHideShortcut || '无'
 
+    const ARadioGroup = resolveComponent('a-radio-group')
+    const ARadio = resolveComponent('a-radio')
+    const ACheckbox = resolveComponent('a-checkbox')
+
     // 使用 h 函数创建 VNode
     const content = h('div', {}, [
       h('div', { style: { marginTop: '10px' } }, [
-        h('a-radio-group', {
+        h(ARadioGroup, {
           value: closeType,
           'onUpdate:value': (val) => { closeType = val },
           onChange: onRadioChange,
         }, [
-          h('a-radio', { value: 1 }, '直接关闭'),
-          h('a-radio', { value: 2 }, '最小化到系统托盘'),
+          h(ARadio, { value: 1 }, '直接关闭'),
+          h(ARadio, { value: 2 }, '最小化到系统托盘'),
         ]),
       ]),
       h('div', { style: { marginTop: '10px' } }, [
-        h('a-checkbox', {
+        h(ACheckbox, {
           checked: doSave,
           'onUpdate:checked': (val) => { doSave = val },
           onChange: onCheckChange,
