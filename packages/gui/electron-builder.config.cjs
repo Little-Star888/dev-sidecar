@@ -13,8 +13,8 @@ module.exports = {
   },
   files: [
     {
-      from: 'dist_electron',
-      to: 'dist_electron',
+      from: 'dist',
+      to: 'dist',
       filter: [
         '**/*',
         '!win-*/**/*',

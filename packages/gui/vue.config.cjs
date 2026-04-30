@@ -6,7 +6,7 @@ const publishProvider = process.env.VUE_APP_PUBLISH_PROVIDER
 console.log('Publish url:', publishUrl)
 
 module.exports = defineConfig({
-  outputDir: 'dist_electron',
+  outputDir: 'dist',
   publicPath: './',
   pages: {
     index: {
