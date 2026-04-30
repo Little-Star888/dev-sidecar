@@ -22,6 +22,7 @@ module.exports = {
         '!linux-*/**/*',
         '!*.zip',
         '!*.dmg',
+        '!*.blockmap',
         '!*.exe',
         '!*.AppImage',
         '!*.deb',

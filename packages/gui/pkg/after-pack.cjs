@@ -3,7 +3,7 @@ const path = require('node:path')
 const archiver = require('archiver')
 const pkg = require('../package.json')
 
-function writeAppUpdateYmlForLinux () {
+function writeAppUpdateYmlForLinux (appOutDir) {
   const publishUrl = process.env.VUE_APP_PUBLISH_URL
   const publishProvider = process.env.VUE_APP_PUBLISH_PROVIDER
   // provider: generic
@@ -14,7 +14,7 @@ url: '${publishUrl}'
 updaterCacheDirName: 'dev-sidecar-gui-updater'
 `
   console.log('write linux app-update.yml,updateUrl:', publishUrl)
-  const filePath = path.resolve('./dist/linux-unpacked/resources/app-update.yml')
+  const filePath = path.join(appOutDir, 'resources', 'app-update.yml')
   fs.writeFileSync(filePath, fileContent)
 }
 exports.default = async function (context) {
@@ -26,7 +26,7 @@ exports.default = async function (context) {
   } else if (context.packager.platform.nodeName === 'linux') {
     targetPath = path.join(context.appOutDir, './resources')
     systemType = 'linux'
-    writeAppUpdateYmlForLinux()
+    writeAppUpdateYmlForLinux(context.appOutDir)
   } else {
     targetPath = path.join(context.appOutDir, './resources')
     systemType = 'win'
