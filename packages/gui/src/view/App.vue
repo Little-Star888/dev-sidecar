@@ -68,6 +68,10 @@ export default {
         }
       })
     },
+    isPreRelease () {
+      const version = this.info && this.info.version
+      return typeof version === 'string' && version.includes('-')
+    },
   },
 
   created() {
