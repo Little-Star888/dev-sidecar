@@ -2,7 +2,9 @@ const { defineConfig } = require('@vue/cli-service')
 const webpack = require('webpack')
 
 const publishUrl = process.env.VUE_APP_PUBLISH_URL
-console.log('Publish url:', publishUrl)
+if (publishUrl) {
+  console.log('Publish url:', publishUrl)
+}
 
 module.exports = defineConfig({
   outputDir: 'dist',
