@@ -1,6 +1,6 @@
 const fs = require('node:fs')
 const path = require('node:path')
-const AdmZip = require('adm-zip')
+const archiver = require('archiver')
 const pkg = require('../package.json')
 
 function writeAppUpdateYmlForLinux () {
@@ -31,8 +31,24 @@ exports.default = async function (context) {
     targetPath = path.join(context.appOutDir, './resources')
     systemType = 'win'
   }
-  const zip = new AdmZip()
-  zip.addLocalFolder(targetPath)
   const partUpdateFile = `update-${systemType}-${pkg.version}.zip`
-  zip.writeZip(path.join(context.outDir, partUpdateFile))
+  const outputPath = path.join(context.outDir, partUpdateFile)
+
+  await new Promise((resolve, reject) => {
+    const output = fs.createWriteStream(outputPath)
+    const archive = archiver('zip', { zlib: { level: 9 } })
+
+    output.on('close', () => {
+      console.log(`Created ${partUpdateFile}, size: ${(archive.pointer() / 1024 / 1024).toFixed(2)} MB`)
+      resolve()
+    })
+
+    archive.on('error', (err) => {
+      reject(err)
+    })
+
+    archive.pipe(output)
+    archive.directory(targetPath, false)
+    archive.finalize()
+  })
 }

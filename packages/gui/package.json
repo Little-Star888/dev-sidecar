@@ -30,6 +30,7 @@
     "@vscode/sudo-prompt": "^9.3.2",
     "adm-zip": "^0.5.17",
     "ant-design-vue": "^4.2.6",
+    "archiver": "^7.0.1",
     "core-js": "^3.49.0",
     "electron-baidu-tongji": "^1.0.5",
     "electron-updater": "^6.8.3",

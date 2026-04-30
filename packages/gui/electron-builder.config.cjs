@@ -12,7 +12,26 @@ module.exports = {
     buildResources: 'build',
   },
   files: [
-    'dist_electron/**/*',
+    {
+      from: 'dist_electron',
+      to: 'dist_electron',
+      filter: [
+        '**/*',
+        '!win-*/**/*',
+        '!mac-*/**/*',
+        '!linux-*/**/*',
+        '!*.zip',
+        '!*.dmg',
+        '!*.exe',
+        '!*.AppImage',
+        '!*.deb',
+        '!*.rpm',
+        '!*.tar.gz',
+        '!*.flatpak',
+        '!builder-*.yml',
+        '!builder-*.yaml',
+      ],
+    },
     'src/**/*',
     'package.json',
     'extra/**/*',
@@ -37,10 +56,6 @@ module.exports = {
       {
         target: 'nsis',
         arch: ['x64', 'ia32', 'arm64'],
-      },
-      {
-        target: 'nsis',
-        arch: ['universal'],
       },
     ],
   },
