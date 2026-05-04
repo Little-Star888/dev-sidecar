@@ -182,6 +182,7 @@
 > 1. ~~[hub.fastgit.org](https://hub.fastgit.org/) （2024/11/18：这个好像失效了？）~~
 > 2. ~~[github.com.cnpmjs.org](https://github.com.cnpmjs.org/) 这个很容易超限（2024/11/18：这个好像失效了？）~~
 > 3. [bgithub.xyz](https://bgithub.xyz/)（edge浏览器可能报毒）
+> 4. [kkgithub.com](https://kkgithub.com/)（目前正在维护中）
 
 ## 五、api
 
