@@ -108,7 +108,7 @@ export default {
       const setting = await this.$api.setting.load()
       console.log('setting', setting)
       this.setting = setting || {}
-      if (this.setting.rootCa && this.setting.rootCa.setuped) {
+      if (this.setting.rootCa && (this.setting.rootCa.setuped || this.setting.rootCa.noTip)) {
         return
       }
       this.$confirm({
